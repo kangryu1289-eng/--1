@@ -69,7 +69,7 @@ namespace Crazyball.CourseKit.Obstacles
                     Destroy(spawnedObjects[index]);
             }
             spawnedObjects.Clear();
-            foreach (BossProjectile projectile in FindObjectsByType<BossProjectile>(FindObjectsSortMode.None))
+            foreach (BossProjectile projectile in FindObjectsByType<BossProjectile>())
                 if (projectile != null) Destroy(projectile.gameObject);
             activeEncounter = null;
             EncounterHealthChanged?.Invoke(string.Empty, 0, 0);
