@@ -43,7 +43,7 @@ namespace Crazyball.CourseKit.Obstacles
         public void Configure(int stage, float worldSlowMultiplier = 1f, float coinBonus = 0f)
         {
             ResetSpawnedObjects();
-            interval = Mathf.Max(0.45f, 1.55f - stage * 0.16f);
+            interval = Mathf.Max(0.45f, 3f - stage * 0.16f);
             scrollSpeed = (1.8f + stage * 0.45f) * Mathf.Clamp(worldSlowMultiplier, 0.4f, 1f);
             coinChance = Mathf.Clamp01(0.35f + coinBonus);
             timer = 0.2f;
@@ -69,7 +69,7 @@ namespace Crazyball.CourseKit.Obstacles
                     Destroy(spawnedObjects[index]);
             }
             spawnedObjects.Clear();
-            foreach (BossProjectile projectile in FindObjectsByType<BossProjectile>())
+            foreach (BossProjectile projectile in FindObjectsByType<BossProjectile>(FindObjectsSortMode.None))
                 if (projectile != null) Destroy(projectile.gameObject);
             activeEncounter = null;
             EncounterHealthChanged?.Invoke(string.Empty, 0, 0);
